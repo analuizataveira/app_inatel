@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { FaBell, FaBook, FaBriefcase, FaCalendarAlt, FaGraduationCap, FaSearch, FaUserGraduate } from 'react-icons/fa';
-import type { AcademicDeadline } from "../interface/AcademicDeadline";
-import type { Reminder } from "../interface/Reminder";
+import { FaBell, FaBook, FaBriefcase, FaGraduationCap, FaSearch, FaUserGraduate } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import type { AcademicDeadline } from "../interface/AcademicDeadline";
+import type { Reminder } from "../interface/Reminder";
 
 export default function DeadlinesList() {
     const [deadlines, setDeadlines] = useState<AcademicDeadline[]>([]);
