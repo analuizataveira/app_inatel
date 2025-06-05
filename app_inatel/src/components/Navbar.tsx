@@ -23,8 +23,8 @@ import { Link } from 'react-router-dom'
 
 const products = [
     { name: 'Prazos acadêmicos', description: 'Veja os prazos acadêmicos', href: '/deadline-list' },
-    { name: 'Documentos', description: 'Documentação', href: '/cursos' },
-    { name: 'Calendário', description: 'Veja o calendário acadêmico', href: '/calendario' },
+    { name: 'Documentos', description: 'Documentação', href: '/documentos' },
+    { name: 'Calendário', description: 'Veja o calendário acadêmico', href: '/calendar' },
     { name: 'Biblioteca', description: 'Acesso à biblioteca virtual', href: 'https://inatel.br/biblioteca/' },
     { name: 'Tesouraria', description: 'Informações sobre tesouraria', href: '/tesouraria' },
 ]
@@ -77,14 +77,27 @@ export default function Navbar() {
                                 <PopoverPanel className="absolute z-10 mt-3 w-64 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                                     <div className="p-2">
                                         {products.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className="flex items-center rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                            >
-                                                <span className="ml-3">{item.name}</span>
-                                            </a>
+                                            item.href.startsWith('http') ? (
+                                                <a
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                >
+                                                    <span className="ml-3">{item.name}</span>
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    key={item.name}
+                                                    to={item.href}
+                                                    className="flex items-center rounded-md px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                >
+                                                    <span className="ml-3">{item.name}</span>
+                                                </Link>
+                                            )
                                         ))}
+
                                     </div>
                                 </PopoverPanel>
                             </Popover>
